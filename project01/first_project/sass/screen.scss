@@ -1,0 +1,144 @@
+/* Maria Deslis
+	- Variables
+		I used variables mostly for fonts, colors, and sizes. (see section labeled VARIABLES)
+	
+	- Nesting
+		I used nesting mostly in the nav section below, to allow for ul, li, and a(links) customization practice. (see nav)
+
+	- Partials
+		I made a partial in the sass folder called _tizaFont.scss where I call my custom font that is stored in the fonts folder. The fonts folder also has the url in the configure.rb. Once I completed _tizaFont.scss, I then imported it into screen.scss so that I could use the font. (see sass folder and @import _tizaFont.scss)
+
+	- Mixins
+		I used mixins in two ways. One was from the tutorial that was given to us by Sass that allowed us to setup our font (hence why it is called setupFont). This allowed for customizing the font for the header in size, shape, font-family, etc. (see header)
+		I then created a mixin that changed the border radius of a box, so that I wouldn't have to type all the different kinds for each box I wanted to try rounding out. You should see the top nav, the footer, and the aside part with rounded boxes (I wish I had known about this last semester! Would have saved me a TON of typing/lines of code) (see nav)
+
+	- Inheritance
+		I mostly used inheritance for practice. You can find it in the aside and footer section of the css. I basically used the same properties for the nav section, and rather than retyping all the css I simply added or nullified any properties I wanted to add/subtract to the aside/footer. Saved a lot of lines of code! (see nav, aside, and footer)
+
+	- Operators
+		I used a operators a few times in this css; mostly for changing the font-size of the headers and for changing the amount of padding a section would have. This way I didn't have to type a whole new number, just adjusted as necessary. I also used percentages in the variables section for adjusting the width of places such as the side part with the image. (see header, content_main, and content_side and the variables) Also the converter from pixels to em value function uses operators as well (see emCalc function)
+*/
+
+/*IMPORTS*/
+@import "compass/reset";
+@import "_tizaFont.scss";
+
+/*VARIABLES*/
+$body-background-color: #A47163;
+$custom: Tiza;
+$body-font-family: Verdana, Tahoma, sans-serif;
+$body-font-color: #31384D;
+$body-font-size: 12px;
+$body-font-weight: normal;
+$body-font-style: normal;
+$header-background-color: #F5579E;
+$section-background-color: #D3BBBE;
+$aside-size: 90%;
+$footer-nav-bkg-color: #F4CBEC; 
+$padding: 2px;
+$margin-auto: auto;
+
+/* Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px). 
+*  Full credit of this function to ZURB's Foundation Framework 4
+*/
+@function emCalc($pxWidth) {
+  @return $pxWidth / $body-font-size * 1em;
+}
+
+/*MIXINS*/
+
+/*if a parameter, aka argument, is not passed in, it has a fallback to $body-font-*/
+@mixin setupFont(
+$family:$body-font-family, 
+$color:$body-font-color, 
+$size:$body-font-size, 
+$weight:$body-font-weight, 
+$style:$body-font-style
+){
+  //Sass allows for "nesting," which allows for you to nest selectors/properties 
+  font:{
+    family: $family;
+    color: $color;
+    size: emCalc($size); //convert px passed in to em
+    weight: $weight;
+    style: $style;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*setup your body class, if for nothing else so the em units actually base from the default amount of 15px, instead of the browser's default font size*/
+
+body{
+  @include setupFont;
+  background-color: $body-background-color;
+  font-size: $body-font-size; //this needs to be a px value
+  color: $body-font-color;
+  padding: 0;
+  margin: 0;
+}
+
+/*make any text in a header twice as large as the body text, the color a hair lighter, and bold*/
+header{
+   background-color: $header-background-color;
+   @include setupFont($family: $custom, $size: $body-font-size*2, $color: lighten($body-font-color, 25%), $weight: bold);
+}
+
+#content {
+	padding: emCalc($padding);
+	margin: $margin-auto;
+}
+
+article {
+	background-color: $section-background-color;
+}
+
+#content_main, #content_side {
+	vertical-align: top;
+	padding: emCalc($padding*5);
+}
+
+aside {
+	@extend nav;
+	padding: emCalc($padding);
+	width: $aside-size;
+}
+
+nav {
+	background-color: $footer-nav-bkg-color;
+	margin: $margin-auto;
+	ul {
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	}
+  	li { 
+  		display: inline-block; 
+  	}
+	a {
+		display: block;
+		padding: 6px 12px;
+		text-decoration: none;
+	}
+	@include border-radius(emCalc(10px));
+}
+
+footer {
+	@extend nav;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+
+img {
+	width: 50%;
+	display: block;
+	margin: $margin-auto;
+}
