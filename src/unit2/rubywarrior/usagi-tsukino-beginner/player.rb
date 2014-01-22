@@ -75,7 +75,7 @@ class Player
 	end
 
 	def play_turn(warrior)
-		puts "WALL STATUS: #{getWall}"
+	#	puts "WALL STATUS: #{getWall}"
 		if warrior.feel.stairs?
 			if getWall == false
 				warrior.pivot!

@@ -1,0 +1,19 @@
+Maria Deslis
+Unit 2 Grading Comments
+
+- Instance Var
+	Examples of instance var is the health variable
+
+- Class Var
+	There was no reason to use class variables
+
+- Constants
+	
+- Array
+	I made an array out of warrior.look and iterated through it to grab the element info
+
+- Functions
+	Created chooseAction and moveWarrior functions
+
+- Comments 
+	Have a comment in level 8 that describes what the array returns
