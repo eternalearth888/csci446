@@ -1,7 +1,5 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  #sorting
-  helper_method :sort_column, :sort_direction
 
   # GET /pets
   # GET /pets.json

@@ -1,10 +1,23 @@
-<h2>Your Villainous Pet</h2>
+<% @cart.line_items.each do |item| %>
+	<h2>You have chosen <%= item.pet.name %></h2>
+<% end %>
 
-<ul>
+<p>
+You have hearby agreed to take in and foster this Arkhamn Asylum patient.
+<br>
+You agree to wash them, feed them, take them out on walks, and give them the attention and love that
+they so desperately need.
+<br>
+You are also aware of the dangers and have taken precautions.
+<br>
+If you die, it's not our fault.
+<br> 
+Have fun!
+</p>
+
 	<% @cart.line_items.each do |item| %>
-		<li><%= item.pet.name %></li>
+		<%= image_tag(item.pet.image_url, :class => 'list_choice') %>
 	<% end %>
-</ul>
 
 <p id="notice"><%= notice %></p>
 

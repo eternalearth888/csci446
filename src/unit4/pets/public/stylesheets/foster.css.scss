@@ -9,6 +9,10 @@ h1 {
 	text-shadow: 2px 2px 5px #788A47;
 }
 
+h2 {
+	text-shadow: 2px 2px 5px #788A47;
+}
+
 h3 {
 	text-shadow: 2px 2px 5px #788A47;
 	border-bottom: 1px dashed;
@@ -51,6 +55,13 @@ h3 {
 .list_image{
 	width: 150px;
 	height: 220px;
+	box-shadow: 2px 2px 5px #788A47;
+	border-radius: 2em;
+}
+
+.list_choice{
+	width: 300px;
+	height: 440px;
 	box-shadow: 2px 2px 5px #788A47;
 	border-radius: 2em;
 }
