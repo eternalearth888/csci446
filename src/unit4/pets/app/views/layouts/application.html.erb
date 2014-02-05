@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pets | mdeslis</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" =>true %>
+  <title>Villainous Pets</title>
+  <%= stylesheet_link_tag "depot", "application", media: "all", "data-turbolinks-track" =>true %>
+  <%= stylesheet_link_tag "scaffold" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body id="store">
+	<div id="banner">
+		<%= image_tag("/images/logo.png") %>
+		<%= @page_title || "Villainous Pets" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			NAVIGATION GOES HERE
+		</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 class Pet < ActiveRecord::Base
+	default_scope :order => 'name'
 	validates :name, :gender, :presence => true
 	validates :gender, inclusion: {in:%w{female male none}, 
 		message: "%{value} is not a valid gender. Please input female, male or none"}

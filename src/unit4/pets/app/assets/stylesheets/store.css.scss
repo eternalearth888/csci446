@@ -1,0 +1,68 @@
+// Place all the styles related to the Pets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1 {
+	font-size: 25px;
+	text-align: left;
+	text-shadow: 2px 2px 5px #788A47;
+}
+
+h3 {
+	text-shadow: 2px 2px 5px #788A47;
+	border-bottom: 1px dashed;
+}
+
+#banner img{
+	width: 75px;
+	height: 100px;
+}
+
+#banner {
+	padding: 10px;
+	border-bottom: 2px solid;
+	padding-bottom: 10px;
+	text-align: center;
+	font:small-caps 50px/50px "Times New Roman" serif;
+	text-shadow: 2px 2px 5px #788A47;
+}
+
+#columns {
+	background-color: #f5579e;
+}
+
+#main {
+	background-color: #F4CBEC;
+	margin-left: 17em;
+	padding-top: 4ex;
+	padding-left: 2em;
+}
+
+#side {
+	float: left;
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	width: 16em;
+	background-color: #F5579E;
+}
+
+.list_image{
+	width: 250px;
+	height: 320px;
+	box-shadow: 2px 2px 5px #788A47;
+	border-radius: 2em;
+}
+
+.entry {
+	margin: auto;
+	padding: .5em;
+}
+
+footer {
+	font-size: 18px;
+	font-weight: bold;
+	padding: .5em;
+	text-align: center;
+}

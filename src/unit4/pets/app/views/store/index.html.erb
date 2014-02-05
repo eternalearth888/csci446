@@ -1,0 +1,17 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1> Pet Catalog </h1>
+
+<% @pets.each do |pet| %>
+	<div class="entry">
+		<h3><%= pet.name %> :: <%= pet.gender %></h3>
+		<%= image_tag(pet.image_url, :class => 'list_image') %>
+	</div>
+<% end %>
+
+<footer>
+Villainous Pets | csci446 | mdeslis
+</footer>
+
