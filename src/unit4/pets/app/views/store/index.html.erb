@@ -8,6 +8,7 @@
 	<div class="entry">
 		<h3><%= pet.name %> :: <%= pet.gender %></h3>
 		<%= image_tag(pet.image_url, :class => 'list_image') %>
+		<%= button_to 'Agree to Foster', line_items_path(:pet_id => pet) %>
 	</div>
 <% end %>
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Villainous Pets</title>
-  <%= stylesheet_link_tag "depot", "application", media: "all", "data-turbolinks-track" =>true %>
+  <title>Villainous Pet Shop</title>
+  <%= stylesheet_link_tag "foster", "application", media: "all", "data-turbolinks-track" =>true %>
   <%= stylesheet_link_tag "scaffold" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,11 +10,13 @@
 <body id="store">
 	<div id="banner">
 		<%= image_tag("/images/logo.png") %>
-		<%= @page_title || "Villainous Pets" %>
+		<%= @page_title || "Villainous Pet Shop" %>
 	</div>
 	<div id="columns">
 		<div id="side">
-			NAVIGATION GOES HERE
+			<ul>
+			<li><a href="store#index">Home</a></li>
+			<li><a href="pets#index">Listings</a></li>
 		</div>
 		<div id="main">
 			<%= yield %>

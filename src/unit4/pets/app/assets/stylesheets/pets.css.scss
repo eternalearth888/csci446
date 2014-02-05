@@ -10,8 +10,8 @@ h1 {
 }
 
 .list_image{
-	width: 165px;
-	height: 240px;
+	width: 100px;
+	height: 190px;
 	border-radius: 2em;
 }
 
@@ -19,7 +19,6 @@ h1 {
 	margin: auto;
 	border-collapse: collapse;
 	box-shadow: 2px 2px 5px #788A47;
-	padding: .5em;
 }
 
 tbody{
@@ -32,15 +31,14 @@ tbody{
 }
 
 #pet_table thead {
-	font-size: 25px;
-	padding: 1em;
+	padding: .5em;
 	font-weight: bold;
 	background: #A47163;
+
 }
 
 #pet_table td{
 	text-align:center;
-	padding: .5em;
 }
 
 footer {

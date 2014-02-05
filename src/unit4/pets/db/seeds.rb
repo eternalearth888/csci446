@@ -25,15 +25,15 @@ Pet.create!(
 )
 
 Pet.create!(
-	:name => 'Lex Luthor',
+	:name => 'Penguin',
 	:gender => 'male',
-	:intell => 100,
+	:intell => 75,
 	:strength => 10,
 	:speed => 12,
-	:durab => 14,
-	:power => 10,
-	:combat => 28,
-	:image_url => '/images/luthor.jpg'
+	:durab => 28,
+	:power => 30,
+	:combat => 45,
+	:image_url => '/images/penguin.jpg'
 )
 
 Pet.create!(
