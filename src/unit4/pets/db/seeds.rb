@@ -1,8 +1,8 @@
 Pet.delete_all
 
-Pet.create(
+Pet.create!(
 	:name => 'Harley Quinn',
-	:gender => 'Female',
+	:gender => 'female',
 	:intell => 81,
 	:strength => 12,
 	:speed => 23,
@@ -12,9 +12,9 @@ Pet.create(
 	:image_url => '/images/harley.jpg'
 )
 
-Pet.create(
+Pet.create!(
 	:name => 'Poison Ivy',
-	:gender => 'Female',
+	:gender => 'female',
 	:intell => 69,
 	:strength => 12,
 	:speed => 23,
@@ -24,9 +24,9 @@ Pet.create(
 	:image_url => '/images/poison.jpg'
 )
 
-Pet.create(
+Pet.create!(
 	:name => 'Lex Luthor',
-	:gender => 'Male',
+	:gender => 'male',
 	:intell => 100,
 	:strength => 10,
 	:speed => 12,
@@ -36,9 +36,9 @@ Pet.create(
 	:image_url => '/images/luthor.jpg'
 )
 
-Pet.create(
+Pet.create!(
 	:name=>'Killer Croc',
-	:gender => 'NA',
+	:gender => 'none',
 	:intell => 25,
 	:strength => 48,
 	:speed => 33,

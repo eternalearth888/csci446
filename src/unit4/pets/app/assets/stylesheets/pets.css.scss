@@ -1,3 +1,51 @@
 // Place all the styles related to the Pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1 {
+	font-size: 50px;
+	text-align: center;
+	text-shadow: 2px 2px 5px #788A47;
+}
+
+.list_image{
+	width: 165px;
+	height: 240px;
+	border-radius: 2em;
+}
+
+#pet_table {
+	margin: auto;
+	border-collapse: collapse;
+	box-shadow: 2px 2px 5px #788A47;
+	padding: .5em;
+}
+
+tbody{
+	tr:nth-child(even) { 
+		background: #F5579E;
+	}
+	tr:nth-child(odd) {
+		background: #F4CBEC;
+	}
+}
+
+#pet_table thead {
+	font-size: 25px;
+	padding: 1em;
+	font-weight: bold;
+	background: #A47163;
+}
+
+#pet_table td{
+	text-align:center;
+	padding: .5em;
+}
+
+footer {
+	font-size: 18px;
+	font-weight: bold;
+	padding: .5em;
+	text-align: center;
+}
