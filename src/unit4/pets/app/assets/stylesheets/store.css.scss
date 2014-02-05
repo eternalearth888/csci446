@@ -5,7 +5,7 @@
 
 h1 {
 	font-size: 25px;
-	text-align: left;
+	text-align: center;
 	text-shadow: 2px 2px 5px #788A47;
 }
 
@@ -15,7 +15,6 @@ h2 {
 
 h3 {
 	text-shadow: 2px 2px 5px #788A47;
-	border-bottom: 1px dashed;
 }
 
 #banner img{
@@ -76,4 +75,16 @@ footer {
 	font-weight: bold;
 	padding: .5em;
 	text-align: center;
+}
+
+#store_table {
+	margin: auto;
+	border-collapse: collapse;
+	width: 95%;
+	tr:nth-child(even) {border-bottom: 2px dashed grey};
+	tr:nth-child(odd) {border-bottom: 2px dashed grey};
+}
+
+#store_table td{
+	padding: .5em
 }

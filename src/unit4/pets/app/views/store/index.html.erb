@@ -3,15 +3,36 @@
 <% end %>
 
 <h1>Catalog</h1>
-
+<table id="store_table">
 <% @pets.each do |pet| %>
 	<div class="entry">
-		<h3><%= pet.name %> :: <%= pet.gender %></h3>
+		<tr>
+		<td align="center">
+		<h3><%= pet.name %></h3>
 		<%= image_tag(pet.image_url, :class => 'list_image') %>
+		</td>
+		<td align="left">
+			Gender: <%= pet.gender %>
+			<br>
+			Strength: <%= pet.strength %>
+			<br>
+			Speed: <%= pet.speed %>
+			<br>
+			Intelligience: <%= pet.intell %>
+			<br>
+			Durability: <%= pet.durab %>
+			<br>
+			Combat: <%= pet.combat %>
+			<br>
+			Power: <%= pet.power %>
+			<br>
+			<br>
 		<%= button_to 'Agree to Foster', line_items_path(:pet_id => pet) %>
+		</td>
+		</tr>
 	</div>
 <% end %>
-
+</table>
 <footer>
 Villainous Pets | csci446 | mdeslis
 </footer>
