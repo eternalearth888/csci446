@@ -1,23 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  gender: MyString
-  intell: 1
-  strength: 1
-  speed: 1
-  durab: 1
-  power: 1
-  combat: 1
-  image_url: MyString
+  name: TestVillain
+  gender: yString
+  intell: 5
+  strength: 5
+  speed: 5
+  durab: 5
+  power: 5
+  combat: 5
+  image_url: TestVillain
 
 two:
-  name: MyString
-  gender: MyString
-  intell: 1
-  strength: 1
-  speed: 1
-  durab: 1
-  power: 1
-  combat: 1
-  image_url: MyString
+  name: TestVillain2
+  gender: TestVillain2
+  intell: 50
+  strength: 50
+  speed: 50
+  durab: 50
+  power: 50
+  combat: 50
+  image_url: TestVillain2
