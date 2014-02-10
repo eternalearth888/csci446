@@ -1,0 +1,44 @@
+<h1>Listing villains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image url</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Intel</th>
+      <th>Str</th>
+      <th>Speed</th>
+      <th>Durab</th>
+      <th>Power</th>
+      <th>Combat</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @villains.each do |villain| %>
+      <tr>
+        <td><%= image_tag(villain.image_url, :class => 'list_image') %></td>
+        <td><%= villain.name %></td>
+        <td><%= villain.gender %></td>
+        <td><%= villain.intel %></td>
+        <td><%= villain.str %></td>
+        <td><%= villain.speed %></td>
+        <td><%= villain.durab %></td>
+        <td><%= villain.power %></td>
+        <td><%= villain.combat %></td>
+        <td><%= link_to 'Show', villain %></td>
+        <td><%= link_to 'Edit', edit_villain_path(villain) %></td>
+        <td><%= link_to 'Destroy', villain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<center>
+<%= link_to 'New Villain', new_villain_path %>
+</center>
