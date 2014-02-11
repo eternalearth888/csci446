@@ -1,4 +1,5 @@
 Arkham::Application.routes.draw do
+  get "asylum/index"
   resources :villains
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,7 @@ Arkham::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root :to => 'asylum#index', :as => 'asylum'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

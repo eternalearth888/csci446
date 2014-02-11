@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Arkham Asylum Foster Program</title>
-  <%= stylesheet_link_tag "foster", "application", media: "all", "data-turbolinks-track" =>true %>
-  <%= stylesheet_link_tag "scaffold" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body id="store">
-	<div id="banner">
-		<%= image_tag("/images/logo.png") %>
-		<%= @page_title || "Arkham Asylum Foster Program" %>
-	</div>
+	<head>
+		<title>Arkham Asylum Foster Program</title>
+		<%= stylesheet_link_tag "foster", "application", media: "all", "data-turbolinks-track" =>true %>
+		<%= stylesheet_link_tag "scaffold" %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body id="store">
+		<div id="banner">
+			<%= image_tag("/images/logo.png") %>
+			<%= @page_title || "Arkham Asylum Foster Program" %>
+		</div>
 	<div id="columns">
 		<div id="side">
 			<ul>
@@ -23,5 +23,5 @@
 			<%= yield %>
 		</div>
 	</div>
-</body>
+	</body>
 </html>

@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Arkham</title>
-  <%= stylesheet_link_tag :arkham  %>
-  <%= javascript_include_tag :defaults %>
+  <title>Arkham Asylum Foster Program</title>
+  <%= stylesheet_link_tag "scaffold" %>
+  <%= stylesheet_link_tag "asylum", :media => "all" %>
+  <%= javascript_include_tag "defaults" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body id="store">
+	<div id="banner">
+		<%= image_tag("/images/logo.png") %>
+		<%= @page_title || "Arkham Asylum Foster Program" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<ul>
+			<li><a href="/">Catalog</a></li>
+			<li><a href="/villains">Listings</a></li>
+			</ul>
+		</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,4 +1,7 @@
 class Villain < ActiveRecord::Base
+	#order villains on home page by name
+	default_scope :order => 'name'
+
 	#validation that name and gender have value
 	validates :name, :gender, :presence => true
 	#validates that name is unique
