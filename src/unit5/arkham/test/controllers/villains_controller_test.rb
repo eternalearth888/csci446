@@ -3,6 +3,17 @@ require 'test_helper'
 class VillainsControllerTest < ActionController::TestCase
   setup do
     @villain = villains(:one)
+	@update = {
+		:name => 'The Riddler',
+		:gender => 'male',
+		:image_url => 'images/riddler.jpg',
+		:intel => 100,
+		:str => 10,
+		:speed => 12,
+		:durab => 14,
+		:power => 10,
+		:combat => 14
+	}
   end
 
   test "should get index" do
@@ -18,8 +29,9 @@ class VillainsControllerTest < ActionController::TestCase
 
   test "should create villain" do
     assert_difference('Villain.count') do
+		post :create, :villain => @update
 #		puts @villain.gender
-      post :create, villain: { combat: @villain.combat, durab: @villain.durab, gender: @villain.gender, image_url: @villain.image_url, intel: @villain.intel, name: @villain.name, power: @villain.power, speed: @villain.speed, str: @villain.str }
+# 		post :create, villain: { combat: @villain.combat, durab: @villain.durab, gender: @villain.gender, image_url: @villain.image_url, intel: @villain.intel, name: @villain.name, power: @villain.power, speed: @villain.speed, str: @villain.str }
     end
 
     assert_redirected_to villain_path(assigns(:villain))
@@ -36,7 +48,8 @@ class VillainsControllerTest < ActionController::TestCase
   end
 
   test "should update villain" do
-    patch :update, id: @villain, villain: { combat: @villain.combat, durab: @villain.durab, gender: @villain.gender, image_url: @villain.image_url, intel: @villain.intel, name: @villain.name, power: @villain.power, speed: @villain.speed, str: @villain.str }
+  	put :update, :id => @villain.to_param, :villain => @update
+#	patch :update, id: @villain, villain: { combat: @villain.combat, durab: @villain.durab, gender: @villain.gender, image_url: @villain.image_url, intel: @villain.intel, name: @villain.name, power: @villain.power, speed: @villain.speed, str: @villain.str }
     assert_redirected_to villain_path(assigns(:villain))
   end
 
