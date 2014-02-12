@@ -1,0 +1,36 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Catalog</h1>
+<table id="store_table">
+<% @villains.each do |villain| %>
+	<div class="entry">
+		<tr>
+		<td align="center">
+		<h3><%= villain.name %></h3>
+		<%= image_tag(villain.image_url, :class => 'list_image') %>
+		</td>
+		<td align="left">
+			Gender: <%= villain.gender %>
+			<br>
+			Strength: <%= villain.str %>
+			<br>
+			Speed: <%= villain.speed %>
+			<br>
+			Intelligience: <%= villain.intel %>
+			<br>
+			Durability: <%= villain.durab %>
+			<br>
+			Combat: <%= villain.combat %>
+			<br>
+			Power: <%= villain.power %>
+			<br>
+			<br>
+			<%#= button_to 'Agree to Foster', line_items_path(:villain_id => villain) %>
+		</td>
+		</tr>
+	</div>
+<% end %>
+</table>
+
