@@ -33,9 +33,7 @@ html {
 
 #side {
 	float: left;
-	padding-top: 1em;
-	padding-left: 1em;
-	padding-bottom: 1em;
+	padding: .5em;
 	width: 16em;
 	background: #AD0006;
 }
@@ -47,8 +45,6 @@ html {
 
 #side li{
 	list-style-type: none;
-	margin: auto;
-	padding: .1em;
 }
 
 a {
@@ -56,7 +52,6 @@ a {
 	text-decoration: none;
 	text-transform: uppercase;
 	font-size: 14px;
-	border-bottom: 1px solid grey;
 }
 
 a:link, a:visited {
@@ -84,6 +79,7 @@ h3 {
 
 footer {
 	margin:auto;
+	color: white;
 	padding: .5em;
 	text-align: center;
 }
@@ -99,5 +95,22 @@ footer {
 
 #asylum .total_line .total_cell {
 	font-weight: bold;
-	border-top: 1px solid #1a1a1a;
+}
+
+/*Style for cart in the sidebar */
+#cart {
+	border-style: double none double none;
+}
+
+#cart, #cart table {
+	font-size: smaller;
+	color: white;
+	margin: auto;
+	padding: .1em;
+}
+
+#cart table {
+	border-top: 1px dotted #595;
+	border-bottom: 1px dotted #595;
+	margin-bottom: 10px;
 }

@@ -3,7 +3,7 @@
 <% end %>
 
 <h1>Catalog</h1>
-<table id="store_table">
+<table id="asylum_table">
 <% @villains.each do |villain| %>
 	<div class="entry">
 		<tr>
@@ -21,7 +21,7 @@
 			<li>Combat: <%= villain.combat %></li>
 			<li>Power: <%= villain.power %></li>
 			<br />
-			<%= button_to 'Agree to Foster', line_items_path(:villain_id => villain) %>
+			<%= button_to 'Agree to Foster', line_items_path(:villain_id => villain), :remote => true %>
 		</td>
 		</tr>
 	</div>

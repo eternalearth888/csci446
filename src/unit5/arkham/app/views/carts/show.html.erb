@@ -1,13 +1,9 @@
 <div class="cart_title">Your Cart</div>
 <table>
-	<% @cart.line_items do |item| %>
-		<tr>
-			<td><%= item.quantity %>&times;</td>
-			<td><%= item.villain.name %></td>
-		</tr>
-	<% end %>
+	<%= render(@cart.line_items) %>
+
 	<tr class="total_line">
-		<td><b><u>Total Price</u></b></td>
+		<td><b><u>TOTAL PRICE:</u></b></td>
 		<td class="total_cell"><b>Your time and sanity</b></td>
 	</tr>
 <p id="notice"><%= notice %></p>

@@ -17,7 +17,7 @@ class CartsController < ApplicationController
 		redirect_to asylum_url, :notice => 'Invalid Cart'
 	else
 		respond_to do |format|
-			format.html # show.html.erb
+			format.html { redirect_to(asylum_url) }
 			format.xml { render :xml => @cart }
 		end
 	end

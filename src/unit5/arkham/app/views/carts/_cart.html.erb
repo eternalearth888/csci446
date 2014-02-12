@@ -1,0 +1,15 @@
+<%unless cart.line_items.empty? %>
+<div class="cart_title"><center>Your Pragmatic Cart</center></div>
+	<table>
+		<%= render(cart.line_items) %>
+
+		<tr class="total_line">
+			<td><u><b>TOTAL PRICE:</b></u></td>
+			<td class="total_cell">Your time and sanity</td>
+		</tr>
+	</table>
+	<center>
+		<%= button_to 'Empty Cart', cart, :method => :delete,
+		:confirm => 'Are you sure?' %>
+	</center>
+<% end %>
