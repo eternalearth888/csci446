@@ -1,11 +1,16 @@
-<h2>Your Pramatic Cart</h2>
-<ul>
-	<% @cart.line_items.each do |item| %>
-		<li><%= item.villain.name %></li>
+<div class="cart_title">Your Cart</div>
+<table>
+	<% @cart.line_items do |item| %>
+		<tr>
+			<td><%= item.quantity %>&times;</td>
+			<td><%= item.villain.name %></td>
+		</tr>
 	<% end %>
-</ul>
-
+	<tr class="total_line">
+		<td><b><u>Total Price</u></b></td>
+		<td class="total_cell"><b>Your time and sanity</b></td>
+	</tr>
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= button_to 'Empty Cart', @cart, :method => :delete,
+	:confirm => 'Are you sure?' %> 
