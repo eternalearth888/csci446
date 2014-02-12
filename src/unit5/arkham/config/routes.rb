@@ -1,4 +1,6 @@
 Arkham::Application.routes.draw do
+  resources :carts
+
   get "asylum/index"
   resources :villains
 
