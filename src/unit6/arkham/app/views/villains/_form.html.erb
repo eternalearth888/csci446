@@ -1,0 +1,53 @@
+<%= form_for(@villain) do |f| %>
+  <% if @villain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@villain.errors.count, "error") %> prohibited this villain from being saved:</h2>
+
+      <ul>
+      <% @villain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :intel %><br>
+    <%= f.number_field :intel %>
+  </div>
+  <div class="field">
+    <%= f.label :str %><br>
+    <%= f.number_field :str %>
+  </div>
+  <div class="field">
+    <%= f.label :speed %><br>
+    <%= f.number_field :speed %>
+  </div>
+  <div class="field">
+    <%= f.label :durab %><br>
+    <%= f.number_field :durab %>
+  </div>
+  <div class="field">
+    <%= f.label :power %><br>
+    <%= f.number_field :power %>
+  </div>
+  <div class="field">
+    <%= f.label :combat %><br>
+    <%= f.number_field :combat %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
