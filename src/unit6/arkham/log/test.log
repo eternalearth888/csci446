@@ -18722,3 +18722,1461 @@ Completed 302 Found in 36ms (ActiveRecord: 0.7ms)
   [1m[36m (178.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (177.2ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (153.7ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (176.4ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (175.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (188.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (188.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (189.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (190.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (189.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (189.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:14:16', '2014-02-19 08:14:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:14:16', '2014-02-19 08:14:16', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:14:16', '2014-02-19 08:14:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:14:16', '2014-02-19 08:14:16', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:14:16', '2014-02-19 08:14:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:14:16', '2014-02-19 08:14:16', 298486374)[0m
+  [1m[35m (177.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:14:16 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:14:16 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.3ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (19.1ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.2ms)
+Completed 200 OK in 747ms (Views: 731.5ms | ActiveRecord: 2.6ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:14:17 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:14:17 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (7.0ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.5ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 10ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (0.9ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.8ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.4ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered line_items/_form.html.erb (6.7ms)
+Completed 500 Internal Server Error in 15ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items"[0m
+Completed 500 Internal Server Error in 8ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (1.6ms)
+Completed 500 Internal Server Error in 8ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+Completed 500 Internal Server Error in 11ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"cart_id"=>"1", "villain_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------------
+VillainsControllerTest: test_should_create_villain
+--------------------------------------------------
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "villains"
+Processing by VillainsController#create as HTML
+  Parameters: {"villain"=>{"name"=>"The Riddler", "gender"=>"male", "image_url"=>"images/riddler.jpg", "intel"=>"100", "str"=>"10", "speed"=>"12", "durab"=>"14", "power"=>"10", "combat"=>"14"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'The Riddler' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["combat", 14], ["created_at", Wed, 19 Feb 2014 08:14:17 UTC +00:00], ["durab", 14], ["gender", "male"], ["image_url", "images/riddler.jpg"], ["intel", 100], ["name", "The Riddler"], ["power", 10], ["speed", 12], ["str", 10], ["updated_at", Wed, 19 Feb 2014 08:14:17 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains/980190963
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+VillainsControllerTest: test_should_destroy_villain
+---------------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+Processing by VillainsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."villain_id" = ? LIMIT 1  [["villain_id", 980190962]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "villains" WHERE "villains"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+VillainsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mVillain Load (0.0ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", "980190962"]]
+  Rendered villains/_form.html.erb (5.2ms)
+Completed 500 Internal Server Error in 13ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#index as HTML
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+Completed 500 Internal Server Error in 9ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+VillainsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#new as HTML
+  Rendered villains/_form.html.erb (3.7ms)
+Completed 500 Internal Server Error in 11ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------
+VillainsControllerTest: test_should_show_villain
+------------------------------------------------
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+Processing by VillainsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+Completed 500 Internal Server Error in 8ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------------
+VillainsControllerTest: test_should_update_villain
+--------------------------------------------------
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+Processing by VillainsController#update as HTML
+  Parameters: {"villain"=>{"name"=>"The Riddler", "gender"=>"male", "image_url"=>"images/riddler.jpg", "intel"=>"100", "str"=>"10", "speed"=>"12", "durab"=>"14", "power"=>"10", "combat"=>"14"}, "id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE ("villains"."name" = 'The Riddler' AND "villains"."id" != 980190962) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "villains" SET "name" = ?, "gender" = ?, "intel" = ?, "speed" = ?, "durab" = ?, "power" = ?, "combat" = ?, "image_url" = ?, "updated_at" = ? WHERE "villains"."id" = 980190962[0m  [["name", "The Riddler"], ["gender", "male"], ["intel", 100], ["speed", 12], ["durab", 14], ["power", 10], ["combat", 14], ["image_url", "images/riddler.jpg"], ["updated_at", Wed, 19 Feb 2014 08:14:17 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains/980190962
+Completed 302 Found in 9ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (507.9ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (173.8ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (187.2ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (186.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (188.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (189.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (189.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (189.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (189.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (178.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:19:03', '2014-02-19 08:19:03', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:19:03', '2014-02-19 08:19:03', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:19:03', '2014-02-19 08:19:03', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:19:03', '2014-02-19 08:19:03', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:19:03', '2014-02-19 08:19:03', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:19:03', '2014-02-19 08:19:03', 298486374)[0m
+  [1m[35m (175.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (10.9ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 70ms (Views: 58.4ms | ActiveRecord: 1.9ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (5.0ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.8ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 9ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (0.9ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.8ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered line_items/_form.html.erb (6.1ms)
+Completed 500 Internal Server Error in 14ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items"[0m
+Completed 500 Internal Server Error in 8ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (1.6ms)
+Completed 500 Internal Server Error in 12ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+Completed 500 Internal Server Error in 7ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"cart_id"=>"1", "villain_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------------
+VillainsControllerTest: test_should_create_villain
+--------------------------------------------------
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "villains"
+Processing by VillainsController#create as HTML
+  Parameters: {"villain"=>{"name"=>"The Riddler", "gender"=>"male", "image_url"=>"images/riddler.jpg", "intel"=>"100", "str"=>"10", "speed"=>"12", "durab"=>"14", "power"=>"10", "combat"=>"14"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'The Riddler' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["combat", 14], ["created_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00], ["durab", 14], ["gender", "male"], ["image_url", "images/riddler.jpg"], ["intel", 100], ["name", "The Riddler"], ["power", 10], ["speed", 12], ["str", 10], ["updated_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains/980190963
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+VillainsControllerTest: test_should_destroy_villain
+---------------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+Processing by VillainsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."villain_id" = ? LIMIT 1  [["villain_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "villains" WHERE "villains"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "villains"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+VillainsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", "980190962"]]
+  Rendered villains/_form.html.erb (5.1ms)
+Completed 500 Internal Server Error in 13ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#index as HTML
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+Completed 500 Internal Server Error in 9ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+VillainsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", 980190962]]
+Processing by VillainsController#new as HTML
+  Rendered villains/_form.html.erb (3.9ms)
+Completed 500 Internal Server Error in 11ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------
+VillainsControllerTest: test_should_show_villain
+------------------------------------------------
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+Processing by VillainsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+Completed 500 Internal Server Error in 12ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------------
+VillainsControllerTest: test_should_update_villain
+--------------------------------------------------
+  [1m[36mVillain Load (0.1ms)[0m  [1mSELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1[0m  [["id", 980190962]]
+Processing by VillainsController#update as HTML
+  Parameters: {"villain"=>{"name"=>"The Riddler", "gender"=>"male", "image_url"=>"images/riddler.jpg", "intel"=>"100", "str"=>"10", "speed"=>"12", "durab"=>"14", "power"=>"10", "combat"=>"14"}, "id"=>"980190962"}
+  [1m[35mVillain Load (0.1ms)[0m  SELECT "villains".* FROM "villains" WHERE "villains"."id" = ? ORDER BY name LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE ("villains"."name" = 'The Riddler' AND "villains"."id" != 980190962) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "villains" SET "name" = ?, "gender" = ?, "intel" = ?, "speed" = ?, "durab" = ?, "power" = ?, "combat" = ?, "image_url" = ?, "updated_at" = ? WHERE "villains"."id" = 980190962[0m  [["name", "The Riddler"], ["gender", "male"], ["intel", 100], ["speed", 12], ["durab", 14], ["power", 10], ["combat", 14], ["image_url", "images/riddler.jpg"], ["updated_at", Wed, 19 Feb 2014 08:19:03 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/villains/980190962
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (883.6ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (176.1ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (176.6ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (175.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (179.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (143.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (144.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (200.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (155.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (178.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:35:11', '2014-02-19 08:35:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:35:11', '2014-02-19 08:35:11', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:35:11', '2014-02-19 08:35:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:35:11', '2014-02-19 08:35:11', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:35:11', '2014-02-19 08:35:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:35:11', '2014-02-19 08:35:11', 298486374)[0m
+  [1m[35m (174.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:35:11 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:35:11 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (16.7ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 80ms (Views: 66.5ms | ActiveRecord: 2.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:35:11 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:35:11 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (5.1ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.6ms)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 9ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.0ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (1.0ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.4ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (521.4ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (172.3ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (176.4ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (174.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (178.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (177.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (177.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (157.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (155.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (167.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:37:43', '2014-02-19 08:37:43', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:37:43', '2014-02-19 08:37:43', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:37:43', '2014-02-19 08:37:43', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:37:43', '2014-02-19 08:37:43', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:37:43', '2014-02-19 08:37:43', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:37:43', '2014-02-19 08:37:43', 298486374)[0m
+  [1m[35m (185.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:37:43 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:37:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (13.6ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.0ms)
+Completed 200 OK in 75ms (Views: 62.7ms | ActiveRecord: 2.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:37:44 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:37:44 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (5.0ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.6ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 9ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.0ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.8ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (916.3ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (173.5ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (188.2ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (186.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (177.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (188.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (189.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (189.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (167.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (146.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:38:45', '2014-02-19 08:38:45', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:38:45', '2014-02-19 08:38:45', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:38:45', '2014-02-19 08:38:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:38:45', '2014-02-19 08:38:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:38:45', '2014-02-19 08:38:45', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:38:45', '2014-02-19 08:38:45', 298486374)[0m
+  [1m[35m (167.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:38:45 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:38:45 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.3ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (17.5ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 81ms (Views: 67.9ms | ActiveRecord: 2.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:38:45 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:38:45 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (4.8ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.5ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 9ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.0ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.8ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.4ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.2ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (510.8ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (174.2ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (176.6ms)[0m  [1mCREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (197.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (188.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (177.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020710')[0m
+  [1m[35m (178.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001059')
+  [1m[36m (178.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140210021224')[0m
+  [1m[35m (178.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212001600')
+  [1m[36m (167.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212020254')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "line_items"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-02-19 08:40:31', '2014-02-19 08:40:31', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("villain_id", "cart_id", "created_at", "updated_at", "id") VALUES (2, 2, '2014-02-19 08:40:31', '2014-02-19 08:40:31', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "carts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:40:31', '2014-02-19 08:40:31', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-02-19 08:40:31', '2014-02-19 08:40:31', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainA', 'female', 5, 10, 15, 20, 25, 30, 'http://imgur.com/MjnJftw', '2014-02-19 08:40:31', '2014-02-19 08:40:31', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "villains" ("name", "gender", "intel", "str", "speed", "durab", "power", "combat", "image_url", "created_at", "updated_at", "id") VALUES ('VillainB', 'male', 30, 25, 20, 15, 10, 5, 'http://imgur.com/i8jXH2H.jpg', '2014-02-19 08:40:31', '2014-02-19 08:40:31', 298486374)[0m
+  [1m[35m (157.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+AsylumControllerTest: test_should_get_index
+-------------------------------------------
+Processing by AsylumController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 19 Feb 2014 08:40:31 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:40:31 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVillain Load (0.2ms)[0m  [1mSELECT "villains".* FROM "villains" ORDER BY name[0m
+  Rendered asylum/index.html.erb within layouts/application (17.5ms)
+  [1m[35mLineItem Exists (0.2ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190963]]
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190963]]
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 81ms (Views: 68.1ms | ActiveRecord: 2.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 19 Feb 2014 08:40:31 UTC +00:00], ["updated_at", Wed, 19 Feb 2014 08:40:31 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (5.2ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.5ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts"
+Completed 500 Internal Server Error in 9ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (0.9ms)
+  Rendered carts/_cart.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mLineItem Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.9ms)
+  [1m[35mLineItem Exists (0.1ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  [1m[36mLineItem Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1[0m  [["cart_id", 980190962]]
+  [1m[35mLineItem Exists (0.0ms)[0m  SELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT 1  [["cart_id", 980190962]]
+  Rendered carts/_cart.html.erb (0.4ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------
+VillainTest: test_villain_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VillainTest: test_villain_gender_must_be_valid
+----------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_image_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VillainTest: test_villain_stats_must_be_valid
+---------------------------------------------
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1[0m
+  [1m[35mVillain Exists (0.1ms)[0m  SELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Androgenous' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

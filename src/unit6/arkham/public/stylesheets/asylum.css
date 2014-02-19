@@ -1,7 +1,7 @@
 html {
-	background-color: black;
 	margin: 0;
 	padding: 0;
+	background-color: black;
 }
 
 body {
@@ -90,6 +90,11 @@ a:focus, a:hover, a:active {
 	border-radius: .5em;
 }
 
+.show_image {
+	width: 300px;
+	height: 400px;
+	border-radius: .5em;
+}
 h1 {
 	text-align: center;
 }

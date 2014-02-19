@@ -2,7 +2,7 @@
 
 <table>
 	<tr>
-		<td><%= image_tag(@villain.image_url) %></td>
+		<td><%= image_tag(@villain.image_url, :class => 'show_image') %></td>
 		<td>
 	<p>
 	  <strong>Name:</strong>
@@ -46,7 +46,14 @@
 
 	</td>
 	</tr>
+	<tr>
+		<td align="center">
+<%= link_to 'Edit', edit_villain_path(@villain) %> 
+		</td>
+		<td align="center">
+<%= link_to 'Back', villains_path %>
+</td>
+</tr>
+
 </table>
 
-<%= link_to 'Edit', edit_villain_path(@villain) %> |
-<%= link_to 'Back', villains_path %>
