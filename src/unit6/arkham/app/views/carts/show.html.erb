@@ -1,7 +1,7 @@
 <h2>Your Pramatic Cart</h2>
 <ul>
 	<% @cart.line_items.each do |item| %>
-		<li><%= item.villain.name %></li>
+		<li><%= item.quantity %> &times; <%= item.villain.name %></li>
 	<% end %>
 </ul>
 

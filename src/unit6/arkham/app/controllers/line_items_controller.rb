@@ -26,7 +26,8 @@ class LineItemsController < ApplicationController
   def create
   	@cart = current_cart
 	villain = Villain.find(params[:villain_id])
-	@line_item = @cart.line_items.build(:villain => villain)
+	@line_item = @cart.add_villain(villain.id)
+	#@line_item = @cart.line_items.build(:villain => villain)
     #@line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
