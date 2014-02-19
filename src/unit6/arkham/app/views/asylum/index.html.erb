@@ -9,7 +9,7 @@
 		<tr>
 		<td align="center">
 		<h3><%= villain.name %></h3>
-		<%= link_to(image_tag(villain.image_url, :class => 'list_image'), line_items_path(:villain_id => villain), :method => :post)  %>
+		<%= link_to(image_tag(villain.image_url, :class => 'list_image'), line_items_path(:villain_id => villain), :method => :post, :remote => true)  %>
 		</td>
 		<td align="left">
 		<ul>
@@ -24,7 +24,7 @@
 			<table>
 				<tr>
 					<td><%= button_to 'View Villain', "#{villains_path}/#{villain.id}", :method => :get %></td>
-					<td><%= button_to 'Consider to Foster', line_items_path(:villain_id => villain) %></td>
+					<td><%= button_to 'Consider to Foster', line_items_path(:villain_id => villain), :remote=>true %></td>
 				</tr>
 			</table>
 		</td>

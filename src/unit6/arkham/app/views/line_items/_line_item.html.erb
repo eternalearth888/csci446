@@ -1,0 +1,8 @@
+<% if line_item == @current_item %>
+<td id="current_item">
+<% else %>
+<tr>
+<% end %>
+	<td><%= line_item.quantity %>&times;</td>
+	<td><%= line_item.villain.name %></td>
+</tr>
