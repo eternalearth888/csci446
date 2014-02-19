@@ -40,6 +40,9 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'will_paginate', '>= 3.0 pre'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

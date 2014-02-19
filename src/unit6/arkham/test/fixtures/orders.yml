@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: Anastasia Shpurik
+  address: Awesome Street
+  email: sputnick@gmail.com
+
+two:
+  user: Luna
+  address: Equestria
+  email: bestpony@mlp.com

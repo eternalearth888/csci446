@@ -39794,3 +39794,92 @@ Started GET "/assets/controls.js?body=1" for 127.0.0.1 at 2014-02-19 02:02:05 -0
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-19 02:02:05 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateOrders (20140219091758)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "address" text, "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140219091758"]]
+  [1m[36m (1690.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddOrderToLineItem (20140219091859)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "line_items" ADD "order_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140219091859"]]
+  [1m[36m (162.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddOrderIdToLineItem (20140219091911)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "line_items" ADD "order_id" integer[0m
+SQLite3::SQLException: duplicate column name: order_id: ALTER TABLE "line_items" ADD "order_id" integer
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (205.3ms)[0m  [1mDROP TABLE "carts"[0m
+  [1m[35m (166.2ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (177.7ms)[0m  [1mDROP TABLE "line_items"[0m
+  [1m[35m (176.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1) 
+  [1m[36m (176.2ms)[0m  [1mDROP TABLE "villains"[0m
+  [1m[35m (177.1ms)[0m  CREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddOrderIdToLineItem (20140219091911)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "line_items" ADD "order_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140219091911"]]
+  [1m[36m (511.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (485.4ms)[0m  [1mDROP TABLE "carts"[0m
+  [1m[35m (168.2ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (165.6ms)[0m  [1mDROP TABLE "line_items"[0m
+  [1m[35m (162.3ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36m (165.2ms)[0m  [1mDROP TABLE "orders"[0m
+  [1m[35m (177.5ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "address" text, "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (177.6ms)[0m  [1mDROP TABLE "villains"[0m
+  [1m[35m (177.4ms)[0m  CREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: Calling #scope or #default_scope with a hash is deprecated. Please use a lambda containing a scope. E.g. scope :red, -> { where(color: 'red') }. (called from <class:Villain> at /run/media/eternalearth/42598eed-3273-4a30-a79d-b0c16ca026d2/GitRepos/csci446/src/unit6/arkham/app/models/villain.rb:3)
+  [1m[36mSQL (183.3ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Harley Quinn' LIMIT 1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 80], ["created_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00], ["durab", 42], ["gender", "female"], ["image_url", "/images/harley.jpg"], ["intel", 81], ["name", "Harley Quinn"], ["power", 30], ["speed", 23], ["str", 12], ["updated_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00]]
+  [1m[36m (180.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Poison Ivy' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 36], ["created_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00], ["durab", 14], ["gender", "female"], ["image_url", "/images/poison.jpg"], ["intel", 69], ["name", "Poison Ivy"], ["power", 71], ["speed", 23], ["str", 12], ["updated_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00]]
+  [1m[36m (172.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Penguin' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 45], ["created_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00], ["durab", 28], ["gender", "male"], ["image_url", "/images/penguin.jpg"], ["intel", 75], ["name", "Penguin"], ["power", 30], ["speed", 12], ["str", 10], ["updated_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00]]
+  [1m[36m (184.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Killer Croc' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 60], ["created_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00], ["durab", 85], ["gender", "none"], ["image_url", "/images/croc.jpg"], ["intel", 25], ["name", "Killer Croc"], ["power", 36], ["speed", 33], ["str", 48], ["updated_at", Wed, 19 Feb 2014 09:36:54 UTC +00:00]]
+  [1m[36m (184.3ms)[0m  [1mcommit transaction[0m
+  [1m[36m (513.3ms)[0m  [1mDROP TABLE "carts"[0m
+  [1m[35m (178.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (177.6ms)[0m  [1mDROP TABLE "line_items"[0m
+  [1m[35m (176.5ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "villain_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36m (176.5ms)[0m  [1mDROP TABLE "orders"[0m
+  [1m[35m (177.6ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "address" text, "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (176.4ms)[0m  [1mDROP TABLE "villains"[0m
+  [1m[35m (177.1ms)[0m  CREATE TABLE "villains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gender" varchar(255), "intel" integer, "str" integer, "speed" integer, "durab" integer, "power" integer, "combat" integer, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: Calling #scope or #default_scope with a hash is deprecated. Please use a lambda containing a scope. E.g. scope :red, -> { where(color: 'red') }. (called from <class:Villain> at /run/media/eternalearth/42598eed-3273-4a30-a79d-b0c16ca026d2/GitRepos/csci446/src/unit6/arkham/app/models/villain.rb:3)
+  [1m[36mSQL (171.5ms)[0m  [1mDELETE FROM "villains"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Harley Quinn' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 80], ["created_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00], ["durab", 42], ["gender", "female"], ["image_url", "/images/harley.jpg"], ["intel", 81], ["name", "Harley Quinn"], ["power", 30], ["speed", 23], ["str", 12], ["updated_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00]]
+  [1m[36m (154.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Poison Ivy' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 36], ["created_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00], ["durab", 14], ["gender", "female"], ["image_url", "/images/poison.jpg"], ["intel", 69], ["name", "Poison Ivy"], ["power", 71], ["speed", 23], ["str", 12], ["updated_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00]]
+  [1m[36m (160.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Penguin' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 45], ["created_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00], ["durab", 28], ["gender", "male"], ["image_url", "/images/penguin.jpg"], ["intel", 75], ["name", "Penguin"], ["power", 30], ["speed", 12], ["str", 10], ["updated_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00]]
+  [1m[36m (161.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mVillain Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "villains" WHERE "villains"."name" = 'Killer Croc' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "villains" ("combat", "created_at", "durab", "gender", "image_url", "intel", "name", "power", "speed", "str", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["combat", 60], ["created_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00], ["durab", 85], ["gender", "none"], ["image_url", "/images/croc.jpg"], ["intel", 25], ["name", "Killer Croc"], ["power", 36], ["speed", 33], ["str", 48], ["updated_at", Wed, 19 Feb 2014 09:37:33 UTC +00:00]]
+  [1m[36m (164.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

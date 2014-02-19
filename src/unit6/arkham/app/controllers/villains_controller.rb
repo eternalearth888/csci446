@@ -71,4 +71,12 @@ class VillainsController < ApplicationController
     def villain_params
       params.require(:villain).permit(:name, :gender, :intel, :str, :speed, :durab, :power, :combat, :image_url)
     end
+
+	def who_bought
+		@villain = Villain.find(params[:id])
+		respond_to do |format|
+			format.atom
+			format.xml { render :xml => @product }
+		end
+	end
 end

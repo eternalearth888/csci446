@@ -5,8 +5,8 @@ html {
 }
 
 body {
-	width: 800px;
-	margin: auto;
+	margin: 0;
+	padding: 0;
 }
 
 #banner {
@@ -111,7 +111,6 @@ footer {
 
 #cart, #cart table {
 	text-align: center;
-	border-style: double none double none;
 	margin: auto .8em auto auto;
 	background-color: #FF7373;
 }
@@ -119,4 +118,36 @@ footer {
 #cart table {
 	border-style: solid none solid none;
 	margin: auto;
+}
+
+/*order form*/
+.arkham_form fieldset {
+	background: #efe;
+}
+
+.arkham_form legend {
+	color: #dfd;
+	background: #141;
+	font-family: sans-serif;
+	padding: 0.2em 1em;
+}
+
+.arkam_form label {
+	width: 5em;
+	float: left;
+	text-align: right;
+	padding-top: 0.2em;
+	margin-right: 0.1em;
+	display: block;
+}
+
+.arkham_form select, .arkham_form textarea, .arkham_form input {
+	margin-left: 4em;
+}
+.arkham_form .submit {
+	margin-left: 4em;
+}
+
+.arkham_form div {
+	margin: .5em 0;
 }

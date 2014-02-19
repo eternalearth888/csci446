@@ -3,6 +3,8 @@
 <table>
 	<%= render(cart.line_items) %>
 </table>
-
-<%= button_to 'Empty Cart', cart, :method => :delete, :confirm => 'Are you sure?' %>
+<br />
+<%= button_to 'Checkout', new_order_path, :method => :get, :confirm => 'Checking Out. Positive?' %>
+<br />
+<%= button_to 'Clear Patients', cart, :method => :delete, :confirm => 'Are you sure?' %>
 <% end %>
