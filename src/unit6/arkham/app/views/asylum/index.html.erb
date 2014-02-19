@@ -20,8 +20,13 @@
 			<li>Durability: <%= villain.durab %></li>
 			<li>Combat: <%= villain.combat %></li>
 			<li>Power: <%= villain.power %></li>
-			<br />
-			<%= button_to 'Agree to Foster', line_items_path(:villain_id => villain) %>
+			<hr />
+			<table>
+				<tr>
+					<td><%= button_to 'View Villain', "#{villains_path}/#{villain.id}", :method => :get %></td>
+					<td><%= button_to 'Consider to Foster', line_items_path(:villain_id => villain) %></td>
+				</tr>
+			</table>
 		</td>
 		</tr>
 	</div>
