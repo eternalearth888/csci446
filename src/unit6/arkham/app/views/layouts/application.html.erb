@@ -19,7 +19,11 @@
 			<li><a href="/">Catalog</a></li>
 			<li><a href="/villains">Listings</a></li>
 			</ul>
-			<div id="cart">
+			<div id="cart"
+				<% if @cart.line_items.empty? %>
+					style="display: none"
+				<% end %>
+			>
 				<%= render @cart %>
 			</div>
 			<footer>
