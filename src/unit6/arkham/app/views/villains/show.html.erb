@@ -1,49 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @villain.name %>
-</p>
+<table>
+	<tr>
+		<td><%= image_tag(@villain.image_url) %></td>
+		<td>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @villain.name %>
+	</p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @villain.gender %>
-</p>
+	<p>
+	  <strong>Gender:</strong>
+	  <%= @villain.gender %>
+	</p>
 
-<p>
-  <strong>Intel:</strong>
-  <%= @villain.intel %>
-</p>
+	<p>
+	  <strong>Intel:</strong>
+	  <%= @villain.intel %>
+	</p>
 
-<p>
-  <strong>Str:</strong>
-  <%= @villain.str %>
-</p>
+	<p>
+	  <strong>Str:</strong>
+	  <%= @villain.str %>
+	</p>
 
-<p>
-  <strong>Speed:</strong>
-  <%= @villain.speed %>
-</p>
+	<p>
+	  <strong>Speed:</strong>
+	  <%= @villain.speed %>
+	</p>
 
-<p>
-  <strong>Durab:</strong>
-  <%= @villain.durab %>
-</p>
+	<p>
+	  <strong>Durab:</strong>
+	  <%= @villain.durab %>
+	</p>
 
-<p>
-  <strong>Power:</strong>
-  <%= @villain.power %>
-</p>
+	<p>
+	  <strong>Power:</strong>
+	  <%= @villain.power %>
+	</p>
 
-<p>
-  <strong>Combat:</strong>
-  <%= @villain.combat %>
-</p>
+	<p>
+	  <strong>Combat:</strong>
+	  <%= @villain.combat %>
+	</p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @villain.image_url %>
-</p>
+	</td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_villain_path(@villain) %> |
 <%= link_to 'Back', villains_path %>
