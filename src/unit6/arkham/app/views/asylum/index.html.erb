@@ -9,7 +9,7 @@
 		<tr>
 		<td align="center">
 		<h3><%= villain.name %></h3>
-		<%= image_tag(villain.image_url, :class => 'list_image') %>
+		<%= link_to(image_tag(villain.image_url, :class => 'list_image'), line_items_path(:villain_id => villain), :method => :post)  %>
 		</td>
 		<td align="left">
 		<ul>

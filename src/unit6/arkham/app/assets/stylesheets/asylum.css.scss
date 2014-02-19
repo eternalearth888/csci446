@@ -1,6 +1,12 @@
 html {
+	background-color: black;
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	width: 800px;
+	margin: auto;
 }
 
 #banner {
@@ -41,14 +47,23 @@ html {
 }
 
 #side ul {
-	margin: 0;
+	margin: auto .8em auto auto;
 	padding: 0;
+	background-color: #FF7373;
+	border-style: double none double none;
 }
 
 #side li{
+	border-bottom: 1px solid #1a1a1a;
 	list-style-type: none;
 	margin: auto;
 	padding: .1em;
+}
+
+#navTop {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 15px;
 }
 
 a {
@@ -56,7 +71,6 @@ a {
 	text-decoration: none;
 	text-transform: uppercase;
 	font-size: 14px;
-	border-bottom: 1px solid grey;
 }
 
 a:link, a:visited {
@@ -65,7 +79,7 @@ a:link, a:visited {
 
 a:focus, a:hover, a:active {
 	color:white;
-	background-color: black;
+	background-color: #FF7373;
 }
 
 
@@ -83,7 +97,9 @@ h3 {
 }
 
 footer {
-	margin: 0 auto;
+	margin-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
