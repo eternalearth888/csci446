@@ -1,6 +1,24 @@
 #!/usr/bin/ruby
 
+require 'erb'
+require 'sqlite3'
 require 'rack'
+
+class BookList
+	attr_accessor :bookList
+
+	def initialize(bookList)
+		@bookList = bookList
+	end
+
+	def render()
+		render.result(binding)
+	end
+
+	def get_binding()
+		binding
+	end
+end
 
 class BookApp
 	def initialize()
@@ -21,14 +39,13 @@ class BookApp
 		f = File.open(file, "r")
 		entries = f.readlines.map.with_index{ |line,i| [i+1]+line.split(/, /) }
 		entries.sort_by!{ |entry| entry[(request.params['sortBook'] || "0").to_i] }
-		entries.each { |entry|
-			response.write("<tr>")
-			response.write("<td>")
-			response.write(entry.join("</td><td>"))
-			response.write("</td>")
-			response.write("</tr>")
-		}
-		response.write("</table>")
+		#create instance
+		record = BookList.new(entries)
+		#call template
+		renderer = ERB.new(File.read("table_template.html.erb"))
+		#write table
+		response.write(renderer.result(record.get_binding))
+
 		f.close
 		# include the footer
 			File.open("footer.html", "r") { |foot| response.write(foot.read) }

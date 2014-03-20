@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<td>Rank</td>
+			<td>Title</td>
+			<td>Author</td>
+			<td>Language</td>
+			<td>Year</td>
+			<td>Copies</td>
+		</tr>
+	</thead>
+	<% for @entry in @bookList %>
+	<tr>
+		<td><%= @entry.rank %></td>
+		<td><%= @entry.title %></td>
+		<td><%= @entry.author %></td>
+		<td><%= @entry.language %></td>
+		<td><%= @entry.year %></td>
+		<td><%= @entry.copies %></td>
+	</tr>
+	<% end %>
+</table>
