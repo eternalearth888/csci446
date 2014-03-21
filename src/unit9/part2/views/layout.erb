@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title><%= @title %></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/bookStyle.css" >
+	</head>
+	<body>
+		<h1><%= @title %></h1>
+		<div id="dropList">
+			<form name="sortForm" action="" method="GET">
+				<select name="sortBook">
+					<option value = "0">Rank</option>
+					<option value = "1">Title</option>
+					<option value = "2">Author</option>
+					<option value = "3">Language</option>
+					<option value = "4">Year</option>
+				</select>
+				<input type="submit" value="Sort List">
+			</form>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<td>Rank</td>
+					<td>Title</td>
+					<td>Author</td>
+					<td>Language</td>
+					<td>Year</td>
+				</tr>
+			</thead>
+			<tr>
+				<% @books.each do |post| %>
+					<td><%= books.id %></td>
+					<td><%= books.title %></td>
+					<td><%= books.author %></td>
+					<td><%= books.language %></td>
+					<td><%= books.published %></td>
+				<% end %>
+			</tr>
+	</table>
+	<footer>
+		Copyright &copy; 2014 Maria Deslis | csci446 | Rader | Spring 2014 | Unit 9 | Sintra
+	</body>
+</html>

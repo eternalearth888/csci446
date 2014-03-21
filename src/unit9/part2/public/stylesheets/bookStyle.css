@@ -1,0 +1,54 @@
+body {
+	background-color: #EEFFFD;
+	color: #1A1A1A;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	text-decoration: underline;
+  color: #F0B85D;
+}
+
+#dropList {
+	margin: auto;
+	text-align: center;
+	padding: 1em;
+}
+
+select {
+	margin: auto;
+}
+
+table {
+	margin: auto;
+	padding: auto;
+	border-collapse: collapse;
+	vertical-align: middle;
+	width: 80%;
+	min-width: 800px;
+	border-style: double none;
+	background-color: #B9FCFC;
+}
+
+td {
+	padding: .5em;
+}
+
+thead {
+	background-color: #4DA4E2;
+	font-size: 24px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #66CCF4;
+}
+
+footer {
+	padding: 1em;
+	margin: auto;
+	text-align: center;
+}
