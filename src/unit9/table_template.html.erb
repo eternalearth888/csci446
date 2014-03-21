@@ -11,12 +11,12 @@
 	</thead>
 	<% for @entry in @bookList %>
 	<tr>
-		<td><%= @entry.rank %></td>
-		<td><%= @entry.title %></td>
-		<td><%= @entry.author %></td>
-		<td><%= @entry.language %></td>
-		<td><%= @entry.year %></td>
-		<td><%= @entry.copies %></td>
+		<td><%= @entry[0] %></td>
+		<td><%= @entry[1] %></td>
+		<td><%= @entry[2] %></td>
+		<td><%= @entry[3] %></td>
+		<td><%= @entry[4] %></td>
+		<td><%= @entry[5] %></td>
 	</tr>
 	<% end %>
 </table>

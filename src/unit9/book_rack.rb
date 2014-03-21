@@ -33,11 +33,18 @@ class BookApp
 		case env["PATH_INFO"]
 	when /^\/?$/
 		# include the header
-			File.open("header.html", "r") { |head| response.write(head.read) }
+		File.open("header.html", "r") { |head| response.write(head.read) }
 		#include the text file
-		file = 'books.txt'
-		f = File.open(file, "r")
-		entries = f.readlines.map.with_index{ |line,i| [i+1]+line.split(/, /) }
+		#file = 'books.txt'
+		#f = File.open(file, "r")
+		#entries = f.readlines.map.with_index{ |line,i| [i+1]+line.split(/, /) }
+		#database
+		db = SQLite3::Database.new("books.sqlite3.db")
+		entries = []
+		db.execute("SELECT * FROM Books") do |record|
+			entries.push([record[0],record[1],record[2],record[3],record[4],record[5]])
+		end
+		#sorting functionality
 		entries.sort_by!{ |entry| entry[(request.params['sortBook'] || "0").to_i] }
 		#create instance
 		record = BookList.new(entries)
@@ -46,9 +53,9 @@ class BookApp
 		#write table
 		response.write(renderer.result(record.get_binding))
 
-		f.close
+		#f.close
 		# include the footer
-			File.open("footer.html", "r") { |foot| response.write(foot.read) }
+		File.open("footer.html", "r") { |foot| response.write(foot.read) }
 
       when /.*?\.css/
         # serve up a css file
