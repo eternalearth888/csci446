@@ -5,13 +5,13 @@ require 'data_mapper'
 require_relative 'book'
 
 # install dm-sqlite-adapter
-DataMapper.setup(:default, "sqlite://#{Dir.pwd}/books.sqlite3.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/books.sqlite3.db")
 
 # Sanitize and Initialize
-DataMapper.finalize
+DataMapper.finalize.auto_upgrade!
 
 # Automatically create tables
-Book.auto_upgrade!
+#Book.auto_upgrade!
 
 get '/' do
 	@title = "Sinatra Search"
@@ -20,8 +20,16 @@ get '/' do
 	@books = Book.all
 
 	#RETURN ME LAST
-	erb :layout
+	erb :no_sort
 end
 
-#SORTING?
-#entries.sort_by!{ |entry| entry[(request.params['sortBook'] || "0").to_i] }
+# Sorting
+post '/' do
+	#Grab the books
+	@books = Book.all
+
+	@books.sort!{ |first, second| eval("first.#{params[:sortBook]}") <=> eval("second.#{params[:sortBook]}") }
+
+	#RETURN ME LAST
+	erb :sort
+end
